@@ -10,6 +10,7 @@
 </head>
 <body>
 직원 리스트 페이지입니다.<br />
+<c:if test="${!empty empList }">
 <table border="1">
    <tr>
       <td>사원번호</td>
@@ -20,7 +21,7 @@
    </tr>
    <c:forEach items="${empList}" var="dto">
    <tr>
-      <td>${dto.employeeId}</td>
+      <td><a href="empInfo.em?empId=${dto.employeeId}">${dto.employeeId}</a></td>
       <td>${dto.empName}</td>
       <td>${dto.jobId}</td>
       <td>${dto.hireDate}</td>
@@ -28,7 +29,10 @@
    </tr>
    </c:forEach>
 </table>
-
+</c:if>
+<c:if test="${empty empList }">
+등록된 직원이 없습니다.
+</c:if>
 
 <a href="empRegest.em">직원등록</a>
 </body>
